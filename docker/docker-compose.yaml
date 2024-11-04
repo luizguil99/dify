@@ -157,7 +157,9 @@ services:
 
   nginx:
     image: nginx:latest
-    entrypoint: ["sh", "-c", "chmod +x /docker-entrypoint.sh && /docker-entrypoint.sh"]
+    entrypoint: ["/bin/sh", "-c"]
+    command: |
+      touch /docker-entrypoint.sh && chmod +x /docker-entrypoint.sh && exec nginx -g "daemon off;"
     volumes:
       - /root/nginx/nginx.conf.template:/etc/nginx/nginx.conf.template
       - /root/nginx/proxy.conf.template:/etc/nginx/proxy.conf.template
