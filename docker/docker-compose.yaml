@@ -143,48 +143,6 @@ services:
           cpus: "1"
           memory: 1024M
 
-  nginx:
-    image: nginx:latest
-    entrypoint: ["sh", "-c", "chmod +x /docker-entrypoint.sh && /docker-entrypoint.sh"]
-    volumes:
-      - /root/nginx/nginx.conf.template:/etc/nginx/nginx.conf.template
-      - /root/nginx/proxy.conf.template:/etc/nginx/proxy.conf.template
-      - /root/nginx/conf.d:/etc/nginx/conf.d
-      - /root/nginx/docker-entrypoint.sh:/docker-entrypoint.sh
-      - /root/nginx/ssl:/etc/ssl
-    networks:
-      - network_public
-    environment:
-      - NGINX_SSL_CERT_FILENAME=dify.crt
-      - NGINX_SSL_CERT_KEY_FILENAME=dify.key
-      - NGINX_SSL_PROTOCOLS=TLSv1.1 TLSv1.2 TLSv1.3
-      - NGINX_WORKER_PROCESSES=auto
-      - NGINX_CLIENT_MAX_BODY_SIZE=15M
-      - NGINX_KEEPALIVE_TIMEOUT=65
-      - NGINX_PROXY_READ_TIMEOUT=3600s
-      - NGINX_PROXY_SEND_TIMEOUT=3600s
-      - NGINX_SERVER_NAME=_
-      - NGINX_PORT=80
-
-    deploy:
-      mode: replicated
-      replicas: 1
-      placement:
-        constraints:
-          - node.role == manager
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: 2048M
-      labels:
-        - traefik.enable=true
-        - traefik.http.routers.nginx.rule=Host(`dify.fluxosmm.com`) ## Url do Dify
-        - traefik.http.routers.nginx.entrypoints=websecure
-        - traefik.http.routers.nginx.tls.certresolver=letsencryptresolver
-        - traefik.http.services.nginx.loadbalancer.server.port=80
-        - traefik.http.services.nginx.loadbalancer.passHostHeader=true
-        - traefik.http.routers.nginx.service=nginx
-
   weaviate:
     image: semitechnologies/weaviate:1.19.0
     volumes:
