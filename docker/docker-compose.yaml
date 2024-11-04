@@ -128,9 +128,9 @@ services:
       - network_public
     environment:
       - EDITION=SELF_HOSTED
-      - CONSOLE_API_URL=
+      - CONSOLE_API_URL=https://console.fluxosmm.com
       ## Url Dify
-      - APP_API_URL=https://seudominio.com.br
+      - APP_API_URL=https://dify.fluxosmm.com
       - SENTRY_DSN=
     deploy:
       mode: replicated
