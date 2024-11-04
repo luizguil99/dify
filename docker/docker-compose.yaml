@@ -18,22 +18,20 @@ services:
       - APP_WEB_URL=https://dify.fluxosmm.com
       ## Dados Postgres
       - MIGRATION_ENABLED=true
-- DB_USERNAME=cm336f5vq040ja7p769zwa0h5
-- DB_PASSWORD=q8NTtF1KpxXX5On9QXwLt8qu
-- DB_HOST=144.126.151.220
-- DB_PORT=9004
-- DB_DATABASE=cm336f5vr040la7p7dabebn9q
-
+      - DB_USERNAME=cm336f5vq040ja7p769zwa0h5
+      - DB_PASSWORD=q8NTtF1KpxXX5On9QXwLt8qu
+      - DB_HOST=144.126.151.220
+      - DB_PORT=9004
+      - DB_DATABASE=cm336f5vr040la7p7dabebn9q
       ## Dados Redis
-     - REDIS_HOST=redis
-- REDIS_PORT=6379
-- REDIS_USERNAME=
-- REDIS_PASSWORD=q8NTtF1KpxXX5On9QXwLt8qu
-- REDIS_USE_SSL=false
-- REDIS_DB=0
-- CELERY_BROKER_URL=redis://:q8NTtF1KpxXX5On9QXwLt8qu@redis:6379/1
-
-      ## Liberar acesso a todos os ip
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_USERNAME=
+      - REDIS_PASSWORD=q8NTtF1KpxXX5On9QXwLt8qu
+      - REDIS_USE_SSL=false
+      - REDIS_DB=0
+      - CELERY_BROKER_URL=redis://:q8NTtF1KpxXX5On9QXwLt8qu@redis:6379/1
+      ## Liberar acesso a todos os IPs
       - WEB_API_CORS_ALLOW_ORIGINS=*
       - CONSOLE_CORS_ALLOW_ORIGINS=*
       ## Dados sobre armazenamento s3
@@ -50,7 +48,7 @@ services:
       - WEAVIATE_CLIENT_TIMEOUT=20
       ## Dados do Email
       - MAIL_TYPE=smtp
-      - MAIL_DEFAULT_SEND_FROM=contato@fluxosmm.com (eg=no-reply seuemail@gmail.com)
+      - MAIL_DEFAULT_SEND_FROM=contato@fluxosmm.com
       - SMTP_SERVER=smtp.hostinger.com
       - SMTP_PORT=465
       - SMTP_USERNAME=contato@fluxosmm.com
@@ -82,19 +80,19 @@ services:
       - LOG_LEVEL=INFO
       - SECRET_KEY=7017ebcb78fa10e5
       ## Dados Postgres
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=Mfcd62!!Mfcd62!!
-      - DB_HOST=postgres
-      - DB_PORT=5432
-      - DB_DATABASE=difydb
+      - DB_USERNAME=cm336f5vq040ja7p769zwa0h5
+      - DB_PASSWORD=q8NTtF1KpxXX5On9QXwLt8qu
+      - DB_HOST=144.126.151.220
+      - DB_PORT=9004
+      - DB_DATABASE=cm336f5vr040la7p7dabebn9q
       ## Dados Redis
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - REDIS_USERNAME=
-      - REDIS_PASSWORD=
+      - REDIS_PASSWORD=q8NTtF1KpxXX5On9QXwLt8qu
       - REDIS_USE_SSL=false
       - REDIS_DB=0
-      - CELERY_BROKER_URL=redis://redis:6379/1
+      - CELERY_BROKER_URL=redis://:q8NTtF1KpxXX5On9QXwLt8qu@redis:6379/1
       ## Dados Weaviate
       - STORAGE_TYPE=local
       - STORAGE_LOCAL_PATH=storage
@@ -104,7 +102,7 @@ services:
       - WEAVIATE_CLIENT_TIMEOUT=20
       ## Dados do Email
       - MAIL_TYPE=smtp
-      - MAIL_DEFAULT_SEND_FROM=contato@fluxosmm.com (eg=no-reply seuemail@gmail.com)
+      - MAIL_DEFAULT_SEND_FROM=contato@fluxosmm.com
       - SMTP_SERVER=smtp.hostinger.com
       - SMTP_PORT=465
       - SMTP_USERNAME=contato@fluxosmm.com
@@ -199,7 +197,6 @@ services:
       CLUSTER_HOSTNAME: node1
       AUTHENTICATION_APIKEY_ENABLED: 'true'
       AUTHENTICATION_APIKEY_ALLOWED_KEYS: WVF5YThaHlkYwhGUSmCRgsX3tD5ngdN8pkih
-      AUTHENTICATION_APIKEY_USERS: hello@dify.ai
       AUTHORIZATION_ADMINLIST_ENABLED: 'true'
       AUTHORIZATION_ADMINLIST_USERS: hello@dify.ai
     networks:
