@@ -1,15 +1,3 @@
-version: "3.7"
-
-###### Acesse o terminal de sua VPS ####
-
-### Execute os comandos abaixo antes de subir a Stack do Dify ####
-
-### Execute: git clone https://github.com/langgenius/dify.git
-
-### Execute: sudo mv /root/dify/docker/nginx /root/nginx
-
-##################
-
 services:
   api:
     image: langgenius/dify-api:latest ## Versão do Dify
@@ -21,7 +9,7 @@ services:
       - MODE=api
       - LOG_LEVEL=INFO
       - SECRET_KEY=sk-9f73s3ljTXVcMT3Blb3ljTqtsKiGHXVcMT3BlbkFJLK7U
-      - CONSOLE_WEB_URL=https://console.fluxosmm.com
+      - CONSOLE_WEB_URL=
       - INIT_PASSWORD=Intruso99@
       - CONSOLE_API_URL=https://console.fluxosmm.com
       - SERVICE_API_URL=
@@ -140,9 +128,9 @@ services:
       - network_public
     environment:
       - EDITION=SELF_HOSTED
-      - CONSOLE_API_URL=https://console.fluxosmm.com
+      - CONSOLE_API_URL=
       ## Url Dify
-      - APP_API_URL=https://dify.fluxosmm.com
+      - APP_API_URL=https://seudominio.com.br
       - SENTRY_DSN=
     deploy:
       mode: replicated
@@ -154,27 +142,6 @@ services:
         limits:
           cpus: "1"
           memory: 1024M
-
-
-
-    deploy:
-      mode: replicated
-      replicas: 1
-      placement:
-        constraints:
-          - node.role == manager
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: 2048M
-      labels:
-        - traefik.enable=true
-        - traefik.http.routers.nginx.rule=Host(`dify.fluxosmm.com`) ## Url do Dify
-        - traefik.http.routers.nginx.entrypoints=websecure
-        - traefik.http.routers.nginx.tls.certresolver=letsencryptresolver
-        - traefik.http.services.nginx.loadbalancer.server.port=80
-        - traefik.http.services.nginx.loadbalancer.passHostHeader=true
-        - traefik.http.routers.nginx.service=nginx
 
   weaviate:
     image: semitechnologies/weaviate:1.19.0
@@ -188,7 +155,6 @@ services:
       CLUSTER_HOSTNAME: node1
       AUTHENTICATION_APIKEY_ENABLED: 'true'
       AUTHENTICATION_APIKEY_ALLOWED_KEYS: WVF5YThaHlkYwhGUSmCRgsX3tD5ngdN8pkih
-      AUTHENTICATION_APIKEY_USERS: hello@dify.ai
       AUTHORIZATION_ADMINLIST_ENABLED: 'true'
       AUTHORIZATION_ADMINLIST_USERS: hello@dify.ai
     networks:
