@@ -9,10 +9,10 @@ services:
       - MODE=api
       - LOG_LEVEL=INFO
       - SECRET_KEY=sk-9f73s3ljTXVcMT3Blb3ljTqtsKiGHXVcMT3BlbkFJLK7U
-      - CONSOLE_WEB_URL=
+      - CONSOLE_WEB_URL=console.fluxosmm.com
       - INIT_PASSWORD=Intruso99@
-      - CONSOLE_API_URL=https://console.fluxosmm.com
-      - SERVICE_API_URL=
+      - CONSOLE_API_URL=apidify.fluxosmm.com
+      - SERVICE_API_URL=service.fluxosmm.com
       - FILES_URL=
       ## Url Dify
       - APP_WEB_URL=https://dify.fluxosmm.com
